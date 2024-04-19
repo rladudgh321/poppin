@@ -3,6 +3,7 @@ import recommendIcon from '../../../public/recommend.png';
 import Image from 'next/image';
 import likeIcon from '../../../public/like.png';
 import { BiHeartCircle } from "react-icons/bi";
+import Link from 'next/link';
 
 
 export default function Product() {
@@ -20,10 +21,10 @@ export default function Product() {
                 return (
                 <div key={v.id}>
                     <div className="img relative w-full h-0 pb-[100%]">
-                        <span>
+                        <Link  href={`/shop/${encodeURIComponent(v.title)}`}>
                             <img className="absolute top-0 left-0 right-0 w-full h-full object-cover" src={v.src} alt={v.title} />
                             <img className="absolute top-0 left-0 right-0 w-full h-full object-cover opacity-0 transition-all duration-500 ease-in-out hover:opacity-100" src={v.fake} alt={v.title} />
-                        </span>
+                        </Link>
                     </div>
                     <div className="title line">{v.title}</div>
                     <div className="price">{v.price}</div>

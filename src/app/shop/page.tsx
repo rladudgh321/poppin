@@ -1,5 +1,5 @@
 import Main from "./Main";
-import Banner from "./banner";
+import Banner from "./Banner";
 
 export default function ShopPage() {
     return (

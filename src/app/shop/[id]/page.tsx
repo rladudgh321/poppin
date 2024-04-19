@@ -1,13 +1,16 @@
-'use client'
 
-import { useRouter } from 'next/navigation'
+import Banner from "../Banner";
+import Breadcrumb from "./Breadcrumb";
+import Main from "./Main";
 
-export default function ShopDetail({params}: {params: { id: string }}) {
-    const router = useRouter();
-    console.log(params)
+
+export default function ShopDetail() {
+    
     return (
-        <main>
-            <div>detail: {params?.id}</div>
-        </main>
+        <>
+            <Banner />
+            <Breadcrumb />
+            <Main />
+        </>
     );
 }
