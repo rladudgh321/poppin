@@ -8,5 +8,5 @@ export const PictureAtom = atom({
 
 export const PictureActiveAtom = atom({
   key:'active',
-  default:null
-})
+  default:null as number | null
+});

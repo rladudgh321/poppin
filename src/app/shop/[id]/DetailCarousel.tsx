@@ -11,11 +11,13 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 // import required modules
+import { PictureActiveAtom } from '@/app/recoil';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 export default function DetailCarousel({images}:{images: Array<{src:string}>} ) {
-    
+  const [activeIndex, setActiveIndex] = useRecoilState(PictureActiveAtom);
   return (
     <div className="relative">
       <Swiper
@@ -32,6 +34,7 @@ export default function DetailCarousel({images}:{images: Array<{src:string}>} ) 
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
+        onSlideChange={(v) => console.log(v.activeIndex)}
         className="mySwiper"
       >
         {
