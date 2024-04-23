@@ -1,7 +1,5 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
-import { imagesItems, imagesProps } from "@/app/shared/interface";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,10 +11,10 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 // import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Image from 'next/image';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-export default function DetailCarousel({images}: imagesProps) {
+export default function DetailCarousel({images}:{images: Array<{src:string}>} ) {
     
   return (
     <div className="relative">
@@ -39,10 +37,10 @@ export default function DetailCarousel({images}: imagesProps) {
         {
             <>
                 <SwiperSlide>
-                    <Image src={images.src} width={70} height={70} alt={images.title} />
+                    <Image src={images[0].src} width={70} height={70} alt={images[0].src} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={images.fake} width={70} height={70} alt={images.title} />
+                    <Image src={images[1].src} width={70} height={70} alt={images[1].src} />
                 </SwiperSlide>
             </>
         }

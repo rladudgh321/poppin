@@ -1,13 +1,10 @@
-
-// {images}:imagesProps object
-export interface imagesProps {
-    images: imagesItems;
+interface srcProps {
+    src: string;
 }
 
 export interface imagesItems {
     id: number;
-    src: string;
-    fake: string;
     title: string;
     price: number;
+    images: srcProps[];
 };
