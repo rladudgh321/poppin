@@ -11,15 +11,15 @@ export default function Main() {
     const params = useParams();
     const Data = useRecoilValue(PictureAtom);
     return (
-        <main>
+        <main className="max-w-7xl mx-auto">
             {
                 Data.map((v) => (
-                    <div key={v.id} className="flex">
+                    <div key={v.id} className="flex justify-center">
                         {v.id === Number(params?.id) &&
                         (
                             <>
                                 <Picture product={v} />
-                                <Info />
+                                <Info Data={v} />
                             </>
                         )}
                     </div>
