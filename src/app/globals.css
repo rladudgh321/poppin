@@ -6,8 +6,13 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  border-collapse: collapse;
 }
 
 .line {
   @apply border-b border-s-indigo-200
+}
+
+.selected {
+  @apply border-t border-l border-r border-slate-500 bg-yellow-300 text-amber-700 font-extrabold
 }

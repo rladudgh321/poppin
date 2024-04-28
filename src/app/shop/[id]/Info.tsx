@@ -2,14 +2,13 @@
 
 import { imagesItems } from "@/app/shared/interface";
 import { useParams } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Image from "next/image";
 import recommendIcon from '../../../../public/recommend.png';
 import newIcon from '../../../../public/new.png';
 
 type Inputs = {
     amount: number;
-    exampleRequired: string;
   }
 
 export default function Info({Data}: {Data:imagesItems}) {
@@ -24,8 +23,9 @@ export default function Info({Data}: {Data:imagesItems}) {
       console.log('info',params.id);
     // const queryDecode = decodeURIComponent(params?.id as string);
     const amountNumber = watch("amount") as number;
+    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
     return (
-        <form className="ml-20">
+        <form className="ml-20" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-5">
                 {
                     Data.id === 1 
@@ -44,13 +44,13 @@ export default function Info({Data}: {Data:imagesItems}) {
             <div className="text-red-500 text-sm border-b border-gray-300">수량을 선택해주세요</div>
             <div className="flex gap-x-4 py-5 border-b border-gray-300">
                 <div>{Data.id === Number(params.id) && Data.title }</div>
-                <input id="amount" type="number" defaultValue={1} {...register("amount", { min: 1 })} className="border border-gray-300 w-14" />
+                <input id="amount" type="number" defaultValue={1} min={1} {...register("amount", { valueAsNumber:true })} className="border border-gray-300 w-14" />
                 <div>{errors.amount && <span>1이상만 됨</span>}</div>
                 <span>개</span>
             </div>
             <div className="flex gap-x-2 py-5 border-b border-gray-300 items-center">
                 <div>총 상품금액(수량): </div>
-                <div className="text-xl">{ amountNumber * Data.price }원</div>
+                <div className="text-xl">{ Number(amountNumber * Data.price) }원</div>
                 <div>(1개)</div>
             </div>
             <div>
