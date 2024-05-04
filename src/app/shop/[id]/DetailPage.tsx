@@ -1,12 +1,20 @@
 import DbTab from "./DbTab"
+import DetailPageCoupon from "./DetailPage/DetailPageCoupon";
+import DetailPageImg from "./DetailPage/DetailPageImg";
+import DetailPageInformation from "./DetailPage/Infomation";
+import DetailPageQnA from "./DetailPage/QnA";
+import DetailPageReview from "./DetailPage/Review";
 
 export default function DetailPage() {
     return (
         <div className="max-w-7xl mx-auto">
             <DbTab />
-            <p>
-                Lorem ipsum dolor sit amet, cons,ecftetur adipisicing elit. Sed, ipsa, minima rerum fugit nam alias cupiditate veniam eaque eveniet reiciendis ut deserunt recusandae asperiores? Voluptates in accusamus, maiores quis iusto inventore officia laudantium consequuntur! Ex excepturi natus reprehenderit dicta aliquam in est quidem necessitatibus officia facilis libero quo consequatur, animi rem aliquid recusandae repellendus optio blanditiis asperiores ea perferendis. Laborum illum impedit quos? Voluptas quaerat a vitae impedit repellat soluta repellendus, fugit nisi? Numquam consequuntur aspernatur fugiat expedita. Vero odio nesciunt vitae hic harum. Optio, expedita mollitia sapiente necessitatibus accusantium esse rerum doloremque, aut vitae error debitis laboriosam ex hic.
-            </p>
+            <DetailPageCoupon />
+            <DetailPageImg />
+            <DetailPageInformation />
+            <DetailPageReview />
+            <DetailPageQnA />
         </div>
     );
 }
+

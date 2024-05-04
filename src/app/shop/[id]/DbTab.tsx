@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function DbTab() {
     const [tab, setTab] = useState<string>("coupon");
@@ -18,6 +18,29 @@ export default function DbTab() {
     const onClickBtnQnA = useCallback(()=>{
         setTab('QnA');
     },[]);
+    useEffect(()=>{
+        const locationCoupon = document.querySelector('#coupon') as HTMLElement;
+        const locationCouponOffsetTop = locationCoupon.offsetTop;
+        const locationDetailPage = document.querySelector('#detail_page') as HTMLElement;
+        const locationDetailPageOffset = locationDetailPage.offsetTop;
+        const locationProductInfo = document.querySelector('#info') as HTMLElement;
+        const locationProductInfoOffset = locationProductInfo.offsetTop;
+        const locationReview = document.querySelector('#review') as HTMLElement;
+        const locationReviewOffset = locationReview.offsetTop;
+        const locationQnA = document.querySelector('#qna') as HTMLElement;
+        const locationQnAOffset = locationQnA.offsetTop;
+        if(tab === 'coupon') {
+            window.scrollTo({ top: locationCouponOffsetTop, behavior: "smooth" });
+        } else if (tab === 'detail_page') {
+            window.scrollTo({ top: locationDetailPageOffset, behavior: "smooth" });
+        } else if(tab === 'product_info') {
+            window.scrollTo({ top: locationProductInfoOffset, behavior: "smooth" });
+        } else if(tab === 'review') {
+            window.scrollTo({ top: locationReviewOffset, behavior: "smooth" });
+        } else if(tab === 'QnA') {
+            window.scrollTo({ top: locationQnAOffset, behavior: "smooth" });
+        }
+    },[tab])
     return (
         <div className="flex justify-center border-b border-slate-500">
             <>

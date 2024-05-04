@@ -50,8 +50,8 @@ export default function Info({Data}: {Data:imagesItems}) {
             </div>
             <div className="flex gap-x-2 py-5 border-b border-gray-300 items-center">
                 <div>총 상품금액(수량): </div>
-                <div className="text-xl">{ Number(amountNumber * Data.price) }원</div>
-                <div>(1개)</div>
+                <div className="text-xl">{ Number(amountNumber * Data.price).toLocaleString() }원</div>
+                <div>({amountNumber}개)</div>
             </div>
             <div>
                 <button className="bg-slate-500 text-white w-full h-10">Buy Now</button>
