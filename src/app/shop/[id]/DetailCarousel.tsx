@@ -2,20 +2,16 @@
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 import './styles.css';
 
 // import required modules
-import { PictureActiveAtom } from '@/app/recoil';
 import Image from 'next/image';
-import { useRecoilState } from 'recoil';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { Dispatch, SetStateAction, useEffect } from 'react';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 interface DetailCarouselProps {
   images: Array<{src:string}>;
@@ -23,9 +19,23 @@ interface DetailCarouselProps {
 }
 
 export default function DetailCarousel({images, setActiveIndex }:DetailCarouselProps ) {
-
+  useEffect(()=>{
+    const img = document.querySelector('.swiper img');
+    if(img?.clientWidth !== 70) {
+      history.go(0);
+    }
+  },[]);
+  // const router = useRouter();
+  // useEffect(()=>{
+  //   const img = document.querySelector('.swiper img');
+  //   if(img?.clientWidth !== 70) {
+  //     router.refresh();
+  //   }
+  // },[router]);
   return (
+    <>
     <div className="relative">
+    
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -41,19 +51,16 @@ export default function DetailCarousel({images, setActiveIndex }:DetailCarouselP
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         onSlideChange={(v) => setActiveIndex(v.activeIndex)}
-        className="mySwiper"
+        className="swiper"
       >
-        {
-            <>
-                <SwiperSlide>
-                    <Image src={images[0].src} width={70} height={70} alt={images[0].src} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={images[1].src} width={70} height={70} alt={images[1].src} />
-                </SwiperSlide>
-            </>
-        }
+          <SwiperSlide key={1} className="swiper-slide">
+              <Image src={images[0].src} width={70} height={70} alt={images[0].src} onLoad={e=> console.log('image e', e)} />
+          </SwiperSlide>
+          <SwiperSlide key={2}>
+              <Image src={images[1].src} width={70} height={70} alt={images[1].src} />
+          </SwiperSlide>
       </Swiper>
     </div>
+    </>
   );
 }

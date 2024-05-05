@@ -14,7 +14,7 @@ export default function Main() {
         <main className="max-w-7xl mx-auto">
             {
                 Data.map((v) => (
-                    <div key={v.id} className="flex justify-center mb-8">
+                    <div key={v.id} className="flex justify-center">
                         {v.id === Number(params?.id) &&
                         (
                             <>

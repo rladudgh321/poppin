@@ -10,7 +10,7 @@ export default function ShopDetail() {
     return (
         <>
             <Banner />
-            <Breadcrumb />
+            <Breadcrumb first="쇼핑" firstLink='/shop' />
             <Main />
             <DetailPage />
         </>

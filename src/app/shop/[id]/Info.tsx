@@ -1,11 +1,11 @@
 'use client'
 
 import { imagesItems } from "@/app/shared/interface";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Image from "next/image";
-import recommendIcon from '../../../../public/recommend.png';
 import newIcon from '../../../../public/new.png';
+import recommendIcon from '../../../../public/recommend.png';
 
 type Inputs = {
     amount: number;
@@ -20,10 +20,8 @@ export default function Info({Data}: {Data:imagesItems}) {
         watch,
         formState: { errors },
       } = useForm<Inputs>();
-      console.log('info',params.id);
-    // const queryDecode = decodeURIComponent(params?.id as string);
-    const amountNumber = watch("amount") as number;
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const amountNumber = watch("amount") as number || 1;
+    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
     return (
         <form className="ml-20" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-5">
@@ -50,7 +48,7 @@ export default function Info({Data}: {Data:imagesItems}) {
             </div>
             <div className="flex gap-x-2 py-5 border-b border-gray-300 items-center">
                 <div>총 상품금액(수량): </div>
-                <div className="text-xl">{ Number(amountNumber * Data.price).toLocaleString() }원</div>
+                <div className="text-xl">{ Number(amountNumber * Data.price).toLocaleString() || Number(Data.price) }원</div>
                 <div>({amountNumber}개)</div>
             </div>
             <div>

@@ -1,8 +1,8 @@
 'use client'
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 export default function DbTab() {
-    const [tab, setTab] = useState<string>("coupon");
+    const [tab, setTab] = useState<string | null>(null);
     const onClickBtnCoupon = useCallback(()=>{
         setTab('coupon');
     },[]);
@@ -18,7 +18,7 @@ export default function DbTab() {
     const onClickBtnQnA = useCallback(()=>{
         setTab('QnA');
     },[]);
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         const locationCoupon = document.querySelector('#coupon') as HTMLElement;
         const locationCouponOffsetTop = locationCoupon.offsetTop;
         const locationDetailPage = document.querySelector('#detail_page') as HTMLElement;
@@ -42,7 +42,7 @@ export default function DbTab() {
         }
     },[tab])
     return (
-        <div className="flex justify-center border-b border-slate-500">
+        <div className="flex justify-center border-b border-slate-500 mt-20">
             <>
                 <label htmlFor="coupon">
                     { tab === 'coupon' 
@@ -81,4 +81,8 @@ export default function DbTab() {
             </>
         </div>
     );
+}
+
+function useELayoutEffect(arg0: () => void, arg1: (string | null)[]) {
+    throw new Error('Function not implemented.');
 }
