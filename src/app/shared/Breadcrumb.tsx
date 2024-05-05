@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 interface BreadcrumbProps {
     params?: { id: string };
-    first?: string;
-    firstLink?: string;
+    first: string;
+    firstLink: string;
 }
 
 export default function Breadcrumb({params, first, firstLink}: BreadcrumbProps) {

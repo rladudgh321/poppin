@@ -1,9 +1,11 @@
-import Breadcrumb from '../shop/[id]/Breadcrumb';
+import Form from './Form';
+import LoginInfo from './LoginInfo';
 
 export default function LoginPage() {
   return (
     <div>
-      <Breadcrumb first='로그인' firstLink='/login' />
+      <Form />
+      <LoginInfo />
     </div>
   );
 }

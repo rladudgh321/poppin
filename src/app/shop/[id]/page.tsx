@@ -1,6 +1,6 @@
 
+import Breadcrumb from "../../shared/Breadcrumb";
 import Banner from "../Banner";
-import Breadcrumb from "./Breadcrumb";
 import DetailPage from "./DetailPage";
 import Main from "./Main";
 
