@@ -7,9 +7,10 @@ type Inputs = {
   emailOrPhone: string | number;
   option:string;
   user_type:string;
+  id:string;
 }
 
-export default function FindIdForm() {
+export default function FindPasswordForm() {
   const {
     register,
     handleSubmit,
@@ -20,7 +21,7 @@ export default function FindIdForm() {
   console.log('ddd',watch("option"))
   return (
     <div className="text-center">
-      <div className="text-2xl mb-5">ID 찾기</div>
+      <div className="text-2xl mb-5">비밀번호 찾기</div>
       <form className="flex justify-center mt-4 gap-x-2" onSubmit={handleSubmit(onSubmit)}>
         <div className='flex flex-col gap-y-2'>
           <div className='flex items-center'>
@@ -53,6 +54,16 @@ export default function FindIdForm() {
               <div className='flex'>
                 <div className='basis-28'>&nbsp;</div>
                 <div className="text-red-500 font-extrabold">이름을 입력해주세요</div>
+              </div> }
+
+          <div className='flex mt-5'>
+            <label htmlFor="name" className='basis-28 w-full flex justify-start items-center'>아이디</label>
+            <input placeholder='ID' id='name' type="text" className=" w-[40vw] border border-slate-300 p-2" {...register("id", { required: true })} />
+          </div>
+            { errors.name &&
+              <div className='flex'>
+                <div className='basis-28'>&nbsp;</div>
+                <div className="text-red-500 font-extrabold">ID를 입력해주세요</div>
               </div> }
           
           {
