@@ -21,7 +21,7 @@ export default function OurProduct() {
                     <td className="border border-slate-200 border-collapse flex-grow shrink flex items-center">이장님냉동딸기 2kg(1kgx2봉)</td>
                     <td className="border border-slate-200 border-collapse basis-24 flex justify-center items-center">￦22,500</td>
                     <td className="border border-slate-200 border-collapse basis-20 flex flex-col items-center justify-center">
-                        <input type="number" name="" id="" className="w-10 border border-slate-300 p-1" />
+                        <input type="number" name="" id="" className="w-10 border border-slate-300 p-1" defaultValue={1} />
                         <input type="button" value="변경" className="border border-slate-300 p-1" />
                     </td>
                     <td className="border border-slate-200 border-collapse basis-24 flex justify-center items-center">-</td>
