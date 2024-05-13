@@ -1,19 +1,21 @@
 'use client'
 
-import { SessionProvider } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import SessionProvider from '@/app/shared/SessionProvider';
 import { RecoilRoot } from 'recoil';
 
 interface NextProviderProps {
   children: React.ReactNode;
 }
 
-export default function NextProvider({children}: NextProviderProps) {
-  const { session } = NextProviderProps;
+export default async  function NextProvider({children}: NextProviderProps) {
+  const session = await getServerSession();
+
   return (
-    <RecoilRoot>
       <SessionProvider session={session}>
-      {children}
+        <RecoilRoot>
+          {children}
+        </RecoilRoot>
       </SessionProvider>
-    </RecoilRoot>
   );
 }

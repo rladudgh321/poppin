@@ -1,10 +1,10 @@
 import Main from "./Main";
-import Banner from "./Banner";
+import Banner from "../shared/Banner";
 
 export default function ShopPage() {
     return (
         <main>
-            <Banner />
+            <Banner menu_title="쇼핑" />
             <Main />
         </main>
     );

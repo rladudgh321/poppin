@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode:false,
   experimental: {
     optimizeCss: true,
+    serverActions: true, //next-auth
   },
   images:{
     remotePatterns: [
