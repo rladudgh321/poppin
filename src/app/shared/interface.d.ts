@@ -8,3 +8,11 @@ export interface imagesItems {
     price: number;
     images: srcProps[];
 };
+
+export interface newsItems {
+    id: number;
+    title: string;
+    from: string;
+    url:string;
+    images: srcProps[];
+}
