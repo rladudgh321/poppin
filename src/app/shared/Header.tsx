@@ -21,8 +21,17 @@ export default function Header() {
         </div>
       </nav>
       <div className="other w-[240px] flex justify-around px-4 items-center">
-        <div className="flex gap-x-2 items-center">KOR <span><GrLanguage /></span></div>
-        <div><PiPersonArmsSpreadLight /></div>
+        <div className="flex gap-x-2 items-center">
+        <GrLanguage />
+          <select name='lang'>
+            <option value="ko">KOR</option>
+            <option value="en">ENG</option>
+          </select>
+          
+        </div>
+        <Link href='/login'>
+          <PiPersonArmsSpreadLight />
+        </Link>
       </div>
     </header>
   );

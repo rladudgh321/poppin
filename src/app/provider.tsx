@@ -8,14 +8,14 @@ interface NextProviderProps {
   children: React.ReactNode;
 }
 
-export default async  function NextProvider({children}: NextProviderProps) {
-  const session = await getServerSession();
+export default function NextProvider({children}: NextProviderProps) {
+  // const session = await getServerSession();
 
   return (
-      <SessionProvider session={session}>
+      // <SessionProvider session={session}>
         <RecoilRoot>
           {children}
         </RecoilRoot>
-      </SessionProvider>
+      // </SessionProvider>
   );
 }

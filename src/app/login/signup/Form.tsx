@@ -28,9 +28,20 @@ export default function FindPasswordForm() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-  //console.log('all',watch("all_option"))
+  // const [selected_all, setSelected_all] = useState<boolean>(watch("all_option"));
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const password = watch("password");
+    const passwordConfirm = watch("passwordConfirm");
+    if(password !== passwordConfirm) {
+      setPasswordError(true);
+    }
+    return console.log(data);
+  }
+  console.log('all', watch("all_option"))
 
+  const clickable = !!watch("need_option1") && !!watch("need_option2") === true ? false : true;
+  console.log("clickable", clickable);
   return (
     <div className="text-center max-w-3xl mx-auto">
       <div className="text-2xl mb-5">회원가입</div>
@@ -77,6 +88,9 @@ export default function FindPasswordForm() {
               <div className='basis-28'>&nbsp;</div>
               <div className="text-red-500 font-extrabold">비밀번호를 입력해주세요</div>
             </div> }
+            {
+              passwordError && <div className="text-red-500">비밀번호가 일치하지 않습니다</div>
+            }
 
             <div className='flex mt-5'>
             <label htmlFor="passwordConfirm" className='text-left basis-28 flex justify-start items-center'>비밀번호 확인</label>
@@ -108,12 +122,11 @@ export default function FindPasswordForm() {
               <div className="text-red-500 font-extrabold">핸드폰 번호를 입력해주세요</div>
             </div> }
         
-          <input type="submit" value="가입하기" className='border border-slate-300 bg-slate-600 text-white p-4 mt-6' />
-        <div className="text-left text-xl mt-10">전체 동의</div>
+        {/* <div className="text-left text-xl mt-10">전체 동의</div>
         <div className='flex gap-x-4 mt-5'>
           <input type="checkbox" id="all" className="w-6" value="all_option" {...register("all_option")} />
           <label htmlFor='all' className='text-lg'>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</label>
-        </div>
+        </div> */}
         
         <div className='text-left mt-14'>[필수] 이용약관 동의</div>
         <div className="border border-slate-300 p-4 m-4 h-80 overflow-scroll text-sm">
@@ -282,7 +295,7 @@ export default function FindPasswordForm() {
         </div>
         <div className='text-left'>
           <label htmlFor='need_option1'>이용약관에 동의하시겠습니까?</label>
-          <input type="checkbox" id="need_option1" className='mx-5' value="need_option1" {...register("need_option1")} />
+          <input type="checkbox" id="need_option1" className='mx-5' value="need_option1" {...register("need_option1")} checked={watch("all_option")} />
           <label htmlFor='need_option1'>동의함</label>
         </div>
 
@@ -340,7 +353,7 @@ o 로그 기록
         </div>
         <div className='text-left'>
           <label htmlFor='need_option2'>개인정보 수집 및 이용에 동의하십니까?</label>
-          <input type="checkbox" id="need_option2" className='mx-5' value="need_option2" {...register("need_option2")} />
+          <input type="checkbox" id="need_option2" className='mx-5' value="need_option2" {...register("need_option2")} checked={watch("all_option")} />
           <label htmlFor='need_option2'>동의함</label>
         </div>
 
@@ -354,15 +367,17 @@ o 로그 기록
         </div>
         <div className='text-left'>
           <label htmlFor='third_contract'>SMS 수신을 동의하십니까?</label>
-          <input type="checkbox" id="third_contract" className='mx-5' value="sms_option" {...register("sms_option")} />
+          <input type="checkbox" id="third_contract" className='mx-5' value="sms_option" {...register("sms_option")} checked={watch("all_option")} />
           <label htmlFor='third_contract'>동의함</label>
         </div>
         <div className='text-left'>
           <label htmlFor='forth_contract'>이메일 수신을 동의하십니까?</label>
-          <input type="checkbox" id="forth_contract" className='mx-5' value="email_option" {...register("email_option")} />
+          <input type="checkbox" id="forth_contract" className='mx-5' value="email_option" {...register("email_option")} checked={watch("all_option")} />
           <label htmlFor='forth_contract'>동의함</label>
         </div>
 
+        <input type="submit" value="가입하기" className='border border-slate-300 bg-slate-600 text-white p-4 mt-6' disabled={clickable} />
+        
         </div>
       </form>
     </div>
