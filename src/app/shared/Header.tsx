@@ -40,7 +40,7 @@ export default function Header() {
       <div className="other w-[240px] flex justify-around px-4 items-center">
         <div className="flex gap-x-2 items-center">
         <GrLanguage />
-          <select name='lang' onChange={(e) => console.log("select e", e.target)} defaultValue="ko">
+          <select name='lang' onChange={(e) => setLang(e.target.value)} value={lang}>
             <option value="ko" onChange={kolang}>KOR</option>
             <option value="en" onChange={enlang}>ENG</option>
           </select>
